@@ -5,7 +5,6 @@ var path = require('path');
 var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var materialPackages = [
-  '@material/base',
   '@material/checkbox'
 ];
 
@@ -39,9 +38,10 @@ module.exports = {
    */
   included: function(app) {
     materialPackages.forEach(function(pkg) {
-      app.import('vendor/dist/mdc.' + pkg.replace('@material/', '') + '.min.js', {
+      app.import('vendor/ember-material-components-web/dist/mdc.' + pkg.replace('@material/', '') + '.min.js', {
         using: [{ transformation: 'amd', as: pkg }]
       });
+      app.import('vendor/ember-material-components-web/dist/mdc.' + pkg.replace('@material/', '') + '.min.css');
     });
   },
   /**
@@ -55,8 +55,10 @@ module.exports = {
   treeForVendor: function() {
     var trees = materialPackages.map(function(pkg) {
       return new Funnel(path.dirname(require.resolve(pkg)), {
-        files: [
-          'dist/mdc.*.min.js'
+        destDir: 'ember-material-components-web',
+        include: [
+          'dist/mdc.*.min.js',
+          'dist/mdc.*.min.css'
         ]
       });
     });
