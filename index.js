@@ -5,7 +5,8 @@ var path = require('path');
 var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var materialPackages = [
-  '@material/checkbox'
+  '@material/checkbox',
+  '@material/radio'
 ];
 
 /**
