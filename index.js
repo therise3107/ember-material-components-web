@@ -5,8 +5,10 @@ var path = require('path');
 var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var materialPackages = [
-  '@material/checkbox',
-  '@material/radio'
+  { name: '@material/checkbox', css: true, js: true },
+  { name: '@material/radio', css: true, js: true },
+  { name: '@material/button', css: true, js: false },
+  { name: '@material/fab', css: true, js: false }
 ];
 
 /**
@@ -39,10 +41,15 @@ module.exports = {
    */
   included: function(app) {
     materialPackages.forEach(function(pkg) {
-      app.import('vendor/ember-material-components-web/dist/mdc.' + pkg.replace('@material/', '') + '.min.js', {
-        using: [{ transformation: 'amd', as: pkg }]
-      });
-      app.import('vendor/ember-material-components-web/dist/mdc.' + pkg.replace('@material/', '') + '.min.css');
+      var pkgBaseName = pkg.name.replace('@material/', '');
+      if (pkg.js) {
+        app.import('vendor/ember-material-components-web/dist/mdc.' + pkgBaseName + '.min.js', {
+          using: [{ transformation: 'amd', as: pkg.name }]
+        });
+      }
+      if (pkg.css) {
+        app.import('vendor/ember-material-components-web/dist/mdc.' + pkgBaseName + '.min.css');
+      }
     });
   },
   /**
@@ -55,12 +62,12 @@ module.exports = {
    */
   treeForVendor: function() {
     var trees = materialPackages.map(function(pkg) {
-      return new Funnel(path.dirname(require.resolve(pkg)), {
+      var include = [];
+      if (pkg.css) { include.push('dist/mdc.*.min.css'); }
+      if (pkg.js) { include.push('dist/mdc.*.min.js'); }
+      return new Funnel('node_modules/' + pkg.name, {
         destDir: 'ember-material-components-web',
-        include: [
-          'dist/mdc.*.min.js',
-          'dist/mdc.*.min.css'
-        ]
+        include: include
       });
     });
 

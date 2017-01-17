@@ -37,6 +37,8 @@
     "@material/theme": "^0.1.0",
     "@material/checkbox": "^0.1.0",
     "@material/radio": "^0.1.1",
+    "@material/button": "^0.1.1",
+    "@material/fab": "^0.2.0",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.10.0",
