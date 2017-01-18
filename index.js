@@ -8,7 +8,8 @@ var materialPackages = [
   { name: '@material/checkbox', css: true, js: true },
   { name: '@material/radio', css: true, js: true },
   { name: '@material/button', css: true, js: false },
-  { name: '@material/fab', css: true, js: false }
+  { name: '@material/fab', css: true, js: false },
+  { name: '@material/card', css: true, js: false }
 ];
 
 /**
