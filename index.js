@@ -9,7 +9,8 @@ var materialPackages = [
   { name: '@material/radio', css: true, js: true },
   { name: '@material/button', css: true, js: false },
   { name: '@material/fab', css: true, js: false },
-  { name: '@material/card', css: true, js: false }
+  { name: '@material/card', css: true, js: false },
+  { name: '@material/icon-toggle', css: true, js: true }
 ];
 
 /**
@@ -44,7 +45,7 @@ module.exports = {
     materialPackages.forEach(function(pkg) {
       var pkgBaseName = pkg.name.replace('@material/', '');
       if (pkg.js) {
-        app.import('vendor/ember-material-components-web/dist/mdc.' + pkgBaseName + '.min.js', {
+        app.import('vendor/ember-material-components-web/dist/mdc.' + camelize(pkgBaseName) + '.min.js', {
           using: [{ transformation: 'amd', as: pkg.name }]
         });
       }
@@ -74,4 +75,19 @@ module.exports = {
 
     return this._super(mergeTrees(trees, { overwrite: true }));
   }
+};
+
+/*!
+ * The camelize function and its RegExps are under the MIT License
+ * Copyright (c) 2016 Yehuda Katz, Tom Dale and Ember.js contributors
+ * https://github.com/emberjs/ember.js/blob/v2.10.0/packages/ember-runtime/lib/system/string.js#L25-L29
+ */
+var STRING_CAMELIZE_REGEXP_1 = (/(\-|\_|\.|\s)+(.)?/g);
+var STRING_CAMELIZE_REGEXP_2 = (/(^|\/)([A-Z])/g);
+function camelize(str) {
+  return str.replace(STRING_CAMELIZE_REGEXP_1, function(match, separator, chr) {
+    return chr ? chr.toUpperCase() : '';
+  }).replace(STRING_CAMELIZE_REGEXP_2, function(match, separator, chr) {
+    return match.toLowerCase();
+  });
 };
