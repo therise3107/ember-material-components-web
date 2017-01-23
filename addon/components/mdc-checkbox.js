@@ -42,7 +42,7 @@ export default Ember.Component.extend(MDCComponent, {
   /**
    * @type {?String}
    */
-  id: null,
+  'input-id': null,
   //endregion
 
   //region Ember Hooks

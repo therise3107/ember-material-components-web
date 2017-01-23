@@ -10,7 +10,10 @@ module.exports = {
       { name: '@material/button', target: '^0.1.1' },
       { name: '@material/fab', target: '^0.2.0' },
       { name: '@material/card', target: '^0.1.0' },
-      { name: '@material/icon-toggle', target: '^0.1.0' }
+      { name: '@material/icon-toggle', target: '^0.1.1' },
+      { name: '@material/elevation', target: '^0.1.1' },
+      { name: '@material/list', target: '^0.1.0' },
+      { name: '@material/form-field', target: '^0.1.1' }
     ]);
   }
 };
