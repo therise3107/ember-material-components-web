@@ -40,6 +40,7 @@ export default Ember.Component.extend(MDCComponent, {
 
   //region Ember Hooks
   classNames: ['mdc-radio'],
+  classNameBindings: ['mdcClassNames'],
   layout,
   didRender() {
     this.sync('checked');

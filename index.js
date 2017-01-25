@@ -13,7 +13,8 @@ var materialPackages = [
   { name: '@material/icon-toggle', css: true, js: true },
   { name: '@material/elevation', css: true, js: false },
   { name: '@material/list', css: true, js: false },
-  { name: '@material/form-field', css: true, js: false }
+  { name: '@material/form-field', css: true, js: false },
+  { name: '@material/textfield', css: true, js: true }
 ];
 
 /**

@@ -1,0 +1,31 @@
+<label class="mdc-textfield {{mdcClassNames}} {{if fullwidth "mdc-textfield--fullwidth"}} {{if disabled "mdc-textfield--disabled"}} {{if value "mdc-textfield--upgraded"}} {{if multiline "mdc-textfield--multiline"}}">
+  {{#if multiline}}
+    {{mdc-textfield/textarea
+      value=value
+      onfocus=(action "handle" "focus")
+      onblur=(action "handle" "blur")
+      oninput=(action "handleInput")
+      onkeydown=(action "handle" "keydown")
+      required=required
+      disabled=disabled
+      rows=rows
+      cols=cols
+    }}
+  {{else}}
+    {{mdc-textfield/input
+      value=value
+      onfocus=(action "handle" "focus")
+      onblur=(action "handle" "blur")
+      oninput=(action "handleInput")
+      onkeydown=(action "handle" "keydown")
+      required=required
+      disabled=disabled
+    }}
+  {{/if}}
+  {{#mdc-textfield/label class-names=labelClassnames}}
+    {{label}}
+  {{/mdc-textfield/label}}
+</label>
+{{#mdc-textfield/helptext attribute-pairs=helpTextAttrs class-names=helptextClassnames}}
+  {{helptext}}
+{{/mdc-textfield/helptext}}

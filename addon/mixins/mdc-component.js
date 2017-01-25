@@ -3,22 +3,15 @@ import Ember from 'ember';
 const { get, set, computed } = Ember;
 
 export const addClass = (className, component) => {
-  const classNames = get(component, 'mdcClasses');
-  if (classNames.includes(className)) { return; }
-  classNames.addObject(className);
-  component.notifyPropertyChange('mdcClasses');
+  get(component, 'mdcClasses').addObject(className);
 };
 
 export const removeClass = (className, component) => {
-  const classNames = get(component, 'mdcClasses');
-  if (!classNames.includes(className)) { return; }
-  classNames.removeObject(className);
-  component.notifyPropertyChange('mdcClasses');
+  get(component, 'mdcClasses').removeObject(className);
 };
 
 export const MDCComponent = Ember.Mixin.create({
   //region Ember Hooks
-  classNameBindings: ['mdcClassNames'],
   init() {
     this._super(...arguments);
     set(this, 'mdcClasses', []);
@@ -50,7 +43,7 @@ export const MDCComponent = Ember.Mixin.create({
   /**
    * @type {String}
    */
-  mdcClassNames: computed('mdcClasses', function() {
+  mdcClassNames: computed('mdcClasses.[]', function() {
     return get(this, 'mdcClasses').join(' ');
   }),
   //endregion

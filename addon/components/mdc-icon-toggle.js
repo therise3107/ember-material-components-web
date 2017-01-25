@@ -45,7 +45,7 @@ export default Ember.Component.extend(MDCComponent, {
     this.syncPressed();
   },
   attributeBindings: mdcAttrs.concat(['tabindex']),
-  classNameBindings: ['aria-disabled:mdc-icon-toggle--disabled'],
+  classNameBindings: ['mdcClassnames', 'aria-disabled:mdc-icon-toggle--disabled'],
   //endregion
 
   //region Methods

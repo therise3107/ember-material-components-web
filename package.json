@@ -44,6 +44,7 @@
     "@material/elevation": "^0.1.1",
     "@material/list": "^0.1.0",
     "@material/form-field": "^0.1.1",
+    "@material/textfield": "^0.2.0",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.10.0",

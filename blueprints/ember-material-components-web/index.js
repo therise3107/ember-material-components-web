@@ -13,7 +13,8 @@ module.exports = {
       { name: '@material/icon-toggle', target: '^0.1.1' },
       { name: '@material/elevation', target: '^0.1.1' },
       { name: '@material/list', target: '^0.1.0' },
-      { name: '@material/form-field', target: '^0.1.1' }
+      { name: '@material/form-field', target: '^0.1.1' },
+      { name: '@material/textfield', target: '^0.2.0' }
     ]);
   }
 };

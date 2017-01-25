@@ -47,6 +47,7 @@ export default Ember.Component.extend(MDCComponent, {
 
   //region Ember Hooks
   classNames: ['mdc-checkbox'],
+  classNameBindings: ['mdcClassnames'],
   layout,
   init() {
     this._super(...arguments);
