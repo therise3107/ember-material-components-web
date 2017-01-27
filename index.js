@@ -14,7 +14,8 @@ var materialPackages = [
   { name: '@material/elevation', css: true, js: false },
   { name: '@material/list', css: true, js: false },
   { name: '@material/form-field', css: true, js: false },
-  { name: '@material/textfield', css: true, js: true }
+  { name: '@material/textfield', css: true, js: true },
+  { name: '@material/menu', css: true, js: true }
 ];
 
 /**

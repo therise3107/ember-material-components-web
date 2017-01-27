@@ -14,7 +14,8 @@ module.exports = {
       { name: '@material/elevation', target: '^0.1.1' },
       { name: '@material/list', target: '^0.1.0' },
       { name: '@material/form-field', target: '^0.1.1' },
-      { name: '@material/textfield', target: '^0.2.0' }
+      { name: '@material/textfield', target: '^0.2.0' },
+      { name: '@material/menu', target: '^0.1.2' }
     ]);
   }
 };

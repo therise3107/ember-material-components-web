@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Divider from '../mdc-list/divider';
 import layout from '../../templates/components/mdc-list-group/divider';
 
