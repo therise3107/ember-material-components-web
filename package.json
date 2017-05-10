@@ -1,7 +1,7 @@
 {
   "name": "ember-material-components-web",
   "version": "0.0.4",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A suite of Ember components wrapping the official Google material-components-web library",
   "keywords": [
     "ember-addon",
     "ember",
@@ -15,7 +15,7 @@
     "material-components-web"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Kerrick Long",
   "directories": {
     "doc": "doc",
     "test": "tests"

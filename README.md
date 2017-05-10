@@ -1,18 +1,14 @@
 # ember-material-components-web
 
-This README outlines the details of collaborating on this Ember addon.
+[![Build Status](https://travis-ci.org/secondstreet/ember-material-components-web.svg?branch=master)](https://travis-ci.org/secondstreet/ember-material-components-web)
+
+Until proper documentation can be written, please refer to the extensive JSDoc comments in the addon/ directory.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-material-components-web`
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+```sh
+ember install ember-material-components-web
+```
 
 ## Running Tests
 
