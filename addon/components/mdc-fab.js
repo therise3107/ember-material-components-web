@@ -16,6 +16,11 @@ export default Ember.Component.extend({
    */
   disabled: false,
   /**
+   * @type {Function}
+   * @param {MouseEvent}
+   */
+  onclick: x => x,
+  /**
    * @type {?String}
    */
   'aria-label': null,
