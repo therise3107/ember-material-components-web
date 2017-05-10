@@ -30,7 +30,7 @@ export default Ember.Component.extend({
   layout,
   tagName: 'button',
   classNames: ['mdc-fab'],
-  attributeBindings: ['aria-label', 'disabled'],
+  attributeBindings: ['aria-label', 'disabled', 'onclick'],
   classNameBindings: ['mini:mdc-fab--mini', 'plain:mdc-fab--plain']
   //endregion
 });
