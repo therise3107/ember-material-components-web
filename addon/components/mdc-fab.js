@@ -12,6 +12,10 @@ export default Ember.Component.extend({
    */
   plain: false,
   /**
+   * @type {Boolean}
+   */
+  disabled: false,
+  /**
    * @type {?String}
    */
   'aria-label': null,
@@ -21,7 +25,7 @@ export default Ember.Component.extend({
   layout,
   tagName: 'button',
   classNames: ['mdc-fab'],
-  attributeBindings: ['aria-label'],
+  attributeBindings: ['aria-label', 'disabled'],
   classNameBindings: ['mini:mdc-fab--mini', 'plain:mdc-fab--plain']
   //endregion
 });
