@@ -70,7 +70,6 @@ export default Ember.Component.extend(MDCComponent, {
 
   //region Ember Hooks
   layout,
-  tagName: '',
   init() {
     [
       'labelClasses',
