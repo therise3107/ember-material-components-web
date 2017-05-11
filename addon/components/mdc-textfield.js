@@ -19,6 +19,11 @@ export default Ember.Component.extend(MDCComponent, {
    */
   disabled: false,
   /**
+   * Only used if `multiline` is false.
+   * @type {String}
+   */
+  type: 'text',
+  /**
    * This will be called when the user indicates they want to change the value
    * of the input. If you want to simulate two-way binding, you can use the
    * input like this:
