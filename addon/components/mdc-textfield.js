@@ -117,7 +117,7 @@ export default Ember.Component.extend(MDCComponent, {
   /**
    * @type {String}
    */
-  labelClassnames: computed('value', 'labelClasses.[]', function() {
+  labelClassnames: computed('value', 'valid', 'labelClasses.[]', function() {
     const classnames = [];
     if (get(this, 'value')) {
       classnames.addObject(cssClasses.LABEL_FLOAT_ABOVE);
