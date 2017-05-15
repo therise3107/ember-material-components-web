@@ -111,19 +111,20 @@ export default Ember.Component.extend(MDCComponent, {
    * @type {EventListener[]}
    */
   inputKeydownHandlers: null,
+  /**
+   * @type {Object}
+   */
+  CLASS_NAMES: cssClasses,
   //endregion
 
   //region Computed Properties
   /**
    * @type {String}
    */
-  labelClassnames: computed('value', 'valid', 'labelClasses.[]', function() {
+  labelClassnames: computed('value', 'labelClasses.[]', function() {
     const classnames = [];
     if (get(this, 'value')) {
       classnames.addObject(cssClasses.LABEL_FLOAT_ABOVE);
-    }
-    if (!get(this, 'valid')) {
-      classnames.addObject(cssClasses.INVALID);
     }
     return classnames.concat(get(this, 'labelClasses')).join(' ');
   }),

@@ -1,4 +1,4 @@
-<label class="mdc-textfield {{mdcClassNames}} {{if fullwidth "mdc-textfield--fullwidth"}} {{if disabled "mdc-textfield--disabled"}} {{if value "mdc-textfield--upgraded"}} {{if multiline "mdc-textfield--multiline"}}">
+<label class="{{CLASS_NAMES.ROOT}} {{mdcClassNames}} {{unless valid CLASS_NAMES.invalid}} {{if fullwidth "mdc-textfield--fullwidth"}} {{if disabled CLASS_NAMES.DISABLED}} {{if value CLASS_NAMES.UPGRADED}} {{if multiline "mdc-textfield--multiline"}}">
   {{#if multiline}}
     {{mdc-textfield/textarea
       value=value
