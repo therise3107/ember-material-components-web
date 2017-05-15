@@ -28,9 +28,7 @@ export default Ember.Component.extend(MDCComponent, {
    * of the input. If you want to simulate two-way binding, you can use the
    * input like this:
    *
-   * {{#mdc-textfield value=myValue onchange=(action (mut myValue)) as |tf|}}
-   *   {{tf.input type="text"}}
-   * {{/mdc-textfield}}
+   * {{mdc-textfield value=myValue onchange=(action (mut myValue))
    *
    * @type {Function}
    * @param {Boolean} checked
@@ -40,6 +38,10 @@ export default Ember.Component.extend(MDCComponent, {
    * @type {Boolean}
    */
   valid: true,
+  /**
+   * @type {?String}
+   */
+  helptext: null,
   /**
    * @type {Boolean}
    */
@@ -118,7 +120,10 @@ export default Ember.Component.extend(MDCComponent, {
   labelClassnames: computed('value', 'labelClasses.[]', function() {
     const classnames = [];
     if (get(this, 'value')) {
-      classnames.addObject('mdc-textfield__label--float-above');
+      classnames.addObject(cssClasses.LABEL_FLOAT_ABOVE);
+    }
+    if (!get(this, 'valid')) {
+      classnames.addObject(cssClasses.INVALID);
     }
     return classnames.concat(get(this, 'labelClasses')).join(' ');
   }),
