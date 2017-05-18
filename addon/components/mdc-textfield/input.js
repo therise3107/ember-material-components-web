@@ -51,6 +51,7 @@ export default Ember.Component.extend({
     'multiple',
     'name',
     'pattern',
+    'placeholder',
     'size',
     'step',
     'type',

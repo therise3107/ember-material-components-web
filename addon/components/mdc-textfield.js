@@ -43,6 +43,10 @@ export default Ember.Component.extend(MDCComponent, {
    */
   helptext: null,
   /**
+   * @type {?String}
+   */
+  placeholder: null,
+  /**
    * @type {Boolean}
    */
   'helptext-persistent': false,
