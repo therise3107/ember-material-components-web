@@ -19,6 +19,10 @@ export default Ember.Component.extend(MDCComponent, {
    */
   disabled: false,
   /**
+   * @type {Boolean}
+   */
+  readonly: false,
+  /**
    * Only used if `multiline` is false.
    * @type {String}
    */

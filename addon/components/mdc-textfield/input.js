@@ -33,6 +33,7 @@ export default Ember.Component.extend({
   attributeBindings: [
     'required',
     'disabled',
+    'readonly',
     'accept',
     'autocomplete',
     'autosave',
