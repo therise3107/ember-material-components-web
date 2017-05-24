@@ -14,7 +14,7 @@ export const MDCComponent = Ember.Mixin.create({
   //region Ember Hooks
   init() {
     this._super(...arguments);
-    set(this, 'mdcClasses', []);
+    set(this, 'mdcClasses', Ember.A([]));
   },
   didInsertElement() {
     this._super(...arguments);
@@ -58,7 +58,7 @@ export const MDCComponent = Ember.Mixin.create({
     const foundation = get(this, 'foundation');
     if (!foundation) { return; }
     const value = get(this, prop);
-    const Prop = prop.capitalize();
+    const Prop = Ember.String.capitalize(prop);
     if (foundation[`is${Prop}`]() !== value) {
       foundation[`set${Prop}`](value);
     }

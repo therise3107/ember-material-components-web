@@ -32,7 +32,7 @@ export default Ember.Component.extend(MDCComponent, {
   //region Ember Hooks
   init() {
     this._super(...arguments);
-    set(this, 'items', []);
+    set(this, 'items', Ember.A([]));
   },
   didInsertElement() {
     this._super(...arguments);

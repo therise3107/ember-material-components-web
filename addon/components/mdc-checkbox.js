@@ -51,7 +51,7 @@ export default Ember.Component.extend(MDCComponent, {
   layout,
   init() {
     this._super(...arguments);
-    set(this, 'changeHandlers', []);
+    set(this, 'changeHandlers', Ember.A([]));
   },
   didRender() {
     this.sync('checked');

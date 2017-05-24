@@ -88,7 +88,7 @@ export default Ember.Component.extend(MDCComponent, {
       'inputBlurHandlers',
       'inputInputHandlers',
       'inputKeydownHandlers',
-    ].forEach(prop => set(this, prop, []));
+    ].forEach(prop => set(this, prop, Ember.A([])));
     this._super(...arguments);
   },
   //endregion
@@ -130,14 +130,14 @@ export default Ember.Component.extend(MDCComponent, {
    * @type {String}
    */
   labelClassnames: computed('value', 'labelClasses.[]', function() {
-    const classnames = [];
+    const classnames = Ember.A([]);
     if (get(this, 'value')) {
       classnames.addObject(cssClasses.LABEL_FLOAT_ABOVE);
     }
     return classnames.concat(get(this, 'labelClasses')).join(' ');
   }),
   helptextClassnames: computed('helptext-persistent', 'helptext-validation-msg', function() {
-    const classnames = [];
+    const classnames = Ember.A([]);
     if (get(this, 'helptext-persistent')) {
       classnames.addObject(cssClasses.HELPTEXT_PERSISTENT);
     }
@@ -225,7 +225,7 @@ export default Ember.Component.extend(MDCComponent, {
   //region Actions
   actions: {
     handle(type, ev) {
-      get(this, `input ${type} handlers`.camelize()).forEach(handler => handler(ev));
+      get(this, Ember.String.camelize(`input ${type} handlers`)).forEach(handler => handler(ev));
     },
     handleInput(ev) {
       this.send('handle', 'input', ev);

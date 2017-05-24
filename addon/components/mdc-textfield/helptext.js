@@ -11,7 +11,7 @@ const MDCTextfieldHelptextComponent = Ember.Component.extend({
   /**
    * @type {String[][]}
    */
-  'attribute-pairs': [],
+  'attribute-pairs': null,
   //endregion
 
   //region Ember Hooks
