@@ -63,6 +63,16 @@ export const MDCComponent = Ember.Mixin.create({
       foundation[`set${Prop}`](value);
     }
   },
+
+  setStyleFor(key, property, value) {
+    Ember.run(() => {
+      set(this, `${key}.${property}`, value);
+      // Setting properties on the object doesn't cause computed properties to recompute
+      // (and we can't put every possible CSS property in the dependent keys),
+      // so we'll just trigger the change notification manually.
+      this.notifyPropertyChange(key);
+    });
+  },
   //endregion
 });
 

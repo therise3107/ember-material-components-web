@@ -16,7 +16,8 @@ module.exports = {
       { name: '@material/form-field', target: '0.1.1' },
       { name: '@material/textfield', target: '0.2.0' },
       { name: '@material/menu', target: '0.1.2' },
-      { name: '@material/toolbar', target: '0.3.2'}
+      { name: '@material/toolbar', target: '0.3.2'},
+      { name: '@material/tabs', target: '0.1.1'}
     ]);
   }
 };

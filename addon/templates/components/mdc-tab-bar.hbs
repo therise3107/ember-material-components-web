@@ -1,0 +1,11 @@
+{{yield (hash
+  tab=(component
+    "mdc-tab-bar/tab-link"
+    has-icon-and-text=isIconsWithText
+    tab-selected=(action "tabSelected")
+    register-tab=(action "registerTab")
+    deregister-tab=(action "deregisterTab")
+    switch-to-tab=(action "switchToTab")
+  )
+)}}
+{{mdc-tab-bar/indicator}}
