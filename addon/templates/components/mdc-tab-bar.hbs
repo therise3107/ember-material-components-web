@@ -1,6 +1,6 @@
 {{yield (hash
   tab=(component
-    "mdc-tab-bar/tab-link"
+    (if links "mdc-tab-bar/tab-link" "mdc-tab-bar/tab")
     has-icon-and-text=isIconsWithText
     tab-selected=(action "tabSelected")
     register-tab=(action "registerTab")

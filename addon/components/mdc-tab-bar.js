@@ -79,19 +79,14 @@ export default Ember.Component.extend(MDCComponent, {
   },
   setTabActiveAtIndex(index, isActive) {
     if (get(this, 'links')) {
-      // TODO
+      this.tabAt(index)._invoke({ stopPropagation() {}, preventDefault() {} }); // TODO: Probably shouldn't be calling private APIs or stubbing events
     }
     else {
       get(this.tabAt(index), 'become-active')(isActive);
     }
   },
   isTabActiveAtIndex(index) {
-    if (get(this, 'links')) {
-      // TODO
-    }
-    else {
-      return !!get(this.tabAt(index), 'active');
-    }
+    return !!get(this.tabAt(index), 'active');
   },
   //endregion
 
@@ -99,7 +94,7 @@ export default Ember.Component.extend(MDCComponent, {
   actions: {
     tabSelected({ tab }, shouldNotifyChange) {
       const index = get(this, 'tabs').indexOf(tab);
-      get(this, 'foundation').switchToTabAtIndex(index, shouldNotifyChange);
+      Ember.run(() => get(this, 'foundation').switchToTabAtIndex(index, shouldNotifyChange));
     },
     registerTab(tab) {
       get(this, 'tabs').addObject(tab);
@@ -108,7 +103,7 @@ export default Ember.Component.extend(MDCComponent, {
       get(this, 'tabs').removeObject(tab);
     },
     switchToTab(tab) {
-      get(this, 'foundation').switchToTabAtIndex(get(this, 'tabs').indexOf(tab), true);
+      Ember.run.next(() => get(this, 'foundation').switchToTabAtIndex(get(this, 'tabs').indexOf(tab), true));
     }
   }
   //endregion
