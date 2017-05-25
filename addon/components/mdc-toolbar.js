@@ -2,13 +2,11 @@ import Ember from 'ember';
 import layout from '../templates/components/mdc-toolbar';
 import { MDCToolbarFoundation, util } from '@material/toolbar';
 import { MDCComponent } from '../mixins/mdc-component';
+import styleComputed from '../utils/style-computed';
 
 const { get, set } = Ember;
 
 const { cssClasses, strings } = MDCToolbarFoundation;
-const styleComputed = prop => Ember.computed(`${prop}`, function() {
-  return Ember.String.htmlSafe(Object.keys(get(this, prop)).reduce((acc, key) => `${acc} ${key}: ${get(this, `${prop}.${key}`)};`, ''));
-});
 
 export default Ember.Component.extend(MDCComponent, {
   //region Attributes

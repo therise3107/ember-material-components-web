@@ -1,1 +1,57 @@
+{{#mdc-tab-bar links=false as |bar|}}
+  {{#bar.tab active=isFirstActive become-active=(action (mut isFirstActive))}}
+    Fruits
+  {{/bar.tab}}
+  {{#bar.tab active=isSecondActive become-active=(action (mut isSecondActive))}}
+    Vegetables
+  {{/bar.tab}}
+  {{#bar.tab active=isThirdActive become-active=(action (mut isThirdActive))}}
+    Meats
+  {{/bar.tab}}
+{{/mdc-tab-bar}}
+{{!--
+<hr>
 
+{{#mdc-tab-bar icons="with-text" links=false as |bar|}}
+  {{#bar.tab active=isFirstActiveAlt become-active=(action (mut isFirstActiveAlt)) as |tab|}}
+    {{#tab.icon}}:D{{/tab.icon}}
+    {{#tab.icon-text}}Smiling{{/tab.icon-text}}
+  {{/bar.tab}}
+  {{#bar.tab active=isSecondActiveAlt become-active=(action (mut isSecondActiveAlt)) as |tab|}}
+    {{#tab.icon}}D:{{/tab.icon}}
+    {{#tab.icon-text}}Frowning{{/tab.icon-text}}
+  {{/bar.tab}}
+  {{#bar.tab active=isThirdActiveAlt become-active=(action (mut isThirdActiveAlt)) as |tab|}}
+    {{#tab.icon}}:O{{/tab.icon}}
+    {{#tab.icon-text}}Shocked{{/tab.icon-text}}
+  {{/bar.tab}}
+{{/mdc-tab-bar}}
+
+<hr>
+
+{{#mdc-tab-bar icons="only" links=false as |bar|}}
+  {{#bar.tab active=isFirstActiveAlt become-active=(action (mut isFirstActiveAlt)) as |tab|}}
+    {{#tab.icon}}(O.O){{/tab.icon}}
+  {{/bar.tab}}
+  {{#bar.tab active=isSecondActiveAlt become-active=(action (mut isSecondActiveAlt)) as |tab|}}
+    {{#tab.icon}}(-.-){{/tab.icon}}
+  {{/bar.tab}}
+  {{#bar.tab active=isThirdActiveAlt become-active=(action (mut isThirdActiveAlt)) as |tab|}}
+    {{#tab.icon}}(^.^){{/tab.icon}}
+  {{/bar.tab}}
+{{/mdc-tab-bar}}
+--}}
+
+<hr>
+{{#mdc-tab-bar as |bar|}}
+  {{#bar.tab "one"}}
+    One
+  {{/bar.tab}}
+  {{#bar.tab "two"}}
+    Two
+  {{/bar.tab}}
+{{/mdc-tab-bar}}
+
+<hr>
+
+{{outlet}}

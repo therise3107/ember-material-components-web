@@ -9,7 +9,7 @@ export default Ember.Mixin.create(MDCComponent, {
   //region Ember Hooks
   layout,
   classNames: ['mdc-tab'],
-  classNameBindings: ['has-icon-and-text:mdc-tab--with-icon-and-text'],
+  classNameBindings: ['has-icon-and-text:mdc-tab--with-icon-and-text', 'mdcClassNames'],
   init() {
     this._super(...arguments);
     set(this, 'interactionHandlers', Ember.A([]));

@@ -2,6 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/mdc-tab-bar';
 import { MDCTabBarFoundation } from '@material/tabs';
 import { MDCComponent } from '../mixins/mdc-component';
+import styleComputed from '../utils/style-computed';
 
 const { computed, get, set } = Ember;
 const { strings } = MDCTabBarFoundation;
@@ -13,6 +14,11 @@ export default Ember.Component.extend(MDCComponent, {
    */
   links: true,
   /**
+   * If present, must be one of `only` or `with-text`
+   * @type {?String}
+   */
+  icons: null,
+  /**
    * @type {Function}
    * @param {Object} evtData
    */
@@ -22,7 +28,7 @@ export default Ember.Component.extend(MDCComponent, {
   //region Ember Hooks
   layout,
   classNames: ['mdc-tab-bar'],
-  classNameBindings: ['isIconsOnly:mdc-tab-bar--icon-tab-bar', 'isIconsWithText:mdc-tab-bar--icons-with-text'],
+  classNameBindings: ['isIconsOnly:mdc-tab-bar--icon-tab-bar', 'isIconsWithText:mdc-tab-bar--icons-with-text', 'mdcClassNames'],
   init() {
     this._super(...arguments);
     set(this, 'tabs', Ember.A([]));
@@ -43,12 +49,9 @@ export default Ember.Component.extend(MDCComponent, {
   //endregion
 
   //region Computed Properties
-  isIconsOnly: computed('', function() {
-    // TODO
-  }),
-  isIconsWithText: computed('', function() {
-    // TODO
-  }),
+  indicatorStyle: styleComputed('mdcIndicatorStyles'),
+  isIconsOnly: computed.equal('icons', 'only'),
+  isIconsWithText: computed.equal('icons', 'with-text'),
   //endregion
 
   //region Method

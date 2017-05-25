@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@material/base": "0.1.0",
-    "@material/animation": "0.1.0",
+    "@material/animation": "0.2.2",
     "@material/theme": "0.1.0",
     "@material/checkbox": "0.1.0",
     "@material/radio": "0.1.1",
