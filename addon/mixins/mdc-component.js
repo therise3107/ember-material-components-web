@@ -30,7 +30,7 @@ export const MDCComponent = Ember.Mixin.create({
 
   //region Properties
   /**
-   * @type {MDCRadioFoundation}
+   * @type {MDCFoundation}
    */
   foundation: null,
   /**

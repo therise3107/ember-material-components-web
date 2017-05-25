@@ -1,6 +1,6 @@
 {
   "name": "ember-material-components-web",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "A suite of Ember components wrapping the official Google material-components-web library",
   "keywords": [
     "ember-addon",
@@ -46,6 +46,7 @@
     "@material/form-field": "0.1.1",
     "@material/textfield": "0.2.0",
     "@material/menu": "0.1.2",
+    "@material/toolbar": "0.3.2",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.10.0",
