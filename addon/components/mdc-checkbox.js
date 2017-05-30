@@ -47,7 +47,8 @@ export default Ember.Component.extend(MDCComponent, {
 
   //region Ember Hooks
   classNames: ['mdc-checkbox'],
-  classNameBindings: ['mdcClassnames'],
+  classNameBindings: ['mdcClassNames'],
+  attributeBindings: ['style'],
   layout,
   init() {
     this._super(...arguments);
@@ -65,6 +66,7 @@ export default Ember.Component.extend(MDCComponent, {
    * @type {EventListener[]}
    */
   changeHandlers: null,
+  ripple: true,
   //endregion
 
   //region Methods

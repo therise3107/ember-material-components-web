@@ -10,10 +10,7 @@ export default Ember.Mixin.create(MDCComponent, {
   layout,
   classNames: ['mdc-tab'],
   classNameBindings: ['has-icon-and-text:mdc-tab--with-icon-and-text', 'mdcClassNames'],
-  init() {
-    this._super(...arguments);
-    set(this, 'interactionHandlers', Ember.A([]));
-  },
+  attributeBindings: ['style'],
   didInsertElement() {
     this._super(...arguments);
     get(this, 'register-tab')(this);
@@ -21,14 +18,6 @@ export default Ember.Mixin.create(MDCComponent, {
   willDestroyElement() {
     this._super(...arguments);
     get(this, 'deregister-tab')(this);
-  },
-  didUpdateAttrs() {
-    this._super(...arguments);
-    this.detachInteractionHandlers();
-  },
-  didRender() {
-    this._super(...arguments);
-    this.attachInteractionHandlers();
   },
   didReceiveAttrs() {
     this._super(...arguments);
@@ -44,10 +33,7 @@ export default Ember.Mixin.create(MDCComponent, {
   //endregion
 
   //region Properties
-  /**
-   * @type {Array<String,Function>[]}
-   */
-  interactionHandlers: null,
+  ripple: true,
   //endregion
 
   //region Computed Properties
@@ -88,31 +74,11 @@ export default Ember.Mixin.create(MDCComponent, {
     return new MDCTabFoundation({
       addClass: (className) => Ember.run(() => get(this, 'mdcClasses').addObject(className)),
       removeClass: (className) => Ember.run(() => get(this, 'mdcClasses').removeObject(className)),
-      registerInteractionHandler: (type, handler) => this.registerInteractionHandler(type, handler),
-      deregisterInteractionHandler: (type, handler) => this.deregisterInteractionHandler(type, handler),
+      registerInteractionHandler: (type, handler) => this.registerMdcInteractionHandler(type, handler),
+      deregisterInteractionHandler: (type, handler) => this.deregisterMdcInteractionHandler(type, handler),
       getOffsetWidth: () => get(this, 'element').offsetWidth,
       getOffsetLeft: () => get(this, 'element').offsetLeft,
       notifySelected: () => get(this, 'tab-selected')({ tab: this }, true),
-    });
-  },
-  attachInteractionHandlers() {
-    get(this, 'interactionHandlers').forEach(([type, handler]) => get(this, 'element').addEventListener(type, handler));
-  },
-  detachInteractionHandlers() {
-    get(this, 'interactionHandlers').forEach(([type, handler]) => get(this, 'element').removeEventListener(type, handler));
-  },
-  registerInteractionHandler(type, handler) {
-    Ember.run(() => {
-      this.detachInteractionHandlers();
-      get(this, 'interactionHandlers').addObject([type, handler]);
-      this.attachInteractionHandlers();
-    });
-  },
-  deregisterInteractionHandler(type, handler) {
-    Ember.run(() => {
-      this.detachInteractionHandlers();
-      get(this, 'interactionHandlers').removeObject([type, handler]);
-      this.attachInteractionHandlers();
     });
   },
   measureSelf() {

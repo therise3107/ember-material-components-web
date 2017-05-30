@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import MDCComponent from '../mixins/mdc-component';
 import layout from '../templates/components/mdc-fab';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(MDCComponent, {
   //region Attributes
   /**
    * @type {Boolean}
@@ -16,11 +17,6 @@ export default Ember.Component.extend({
    */
   disabled: false,
   /**
-   * @type {Function}
-   * @param {MouseEvent}
-   */
-  onclick: x => x,
-  /**
    * @type {?String}
    */
   'aria-label': null,
@@ -30,7 +26,11 @@ export default Ember.Component.extend({
   layout,
   tagName: 'button',
   classNames: ['mdc-fab'],
-  attributeBindings: ['aria-label', 'disabled', 'onclick', 'type'],
-  classNameBindings: ['mini:mdc-fab--mini', 'plain:mdc-fab--plain']
+  attributeBindings: ['aria-label', 'disabled', 'type', 'style'],
+  classNameBindings: ['mini:mdc-fab--mini', 'plain:mdc-fab--plain', 'mdcClassNames'],
+  //endregion
+
+  //region Properties
+  ripple: true
   //endregion
 });

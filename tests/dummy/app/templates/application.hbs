@@ -1,3 +1,153 @@
+<h1 class="mdc-typography--headline">MDC-Ember Demos</h1>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Buttons</h2>
+  {{#mdc-button}}Standard Button{{/mdc-button}}
+  {{#mdc-button disabled=true click=(action "alert" "Should not see this.")}}Disabled Button{{/mdc-button}}
+  {{#mdc-button accent=true}}Accent Button{{/mdc-button}}
+  {{#mdc-button raised=true}}Raised Button{{/mdc-button}}
+  {{#mdc-button raised=true accent=true}}Raised Accent Button{{/mdc-button}}
+  {{#mdc-button click=(action "alert" "Action button clicked")}}Action Button{{/mdc-button}}
+  <form class="tiny-form" onsubmit={{action "alert" "Form Submitted"}}>
+    {{#mdc-button type="submit"}}Submit Button{{/mdc-button}}
+  </form>
+</section>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Cards</h2>
+  {{#mdc-card as |card|}}
+    {{#card.primary}}
+      {{#card.title}}
+        Card Title
+      {{/card.title}}
+      {{#card.subtitle}}
+        Card Subtitle
+      {{/card.subtitle}}
+    {{/card.primary}}
+    {{card.media-item src="http://placekitten.com/960/480" size=3 width=480 alt="Kitten"}}
+    {{#card.supporting-text}}
+      Please note that the API for cards is planned to change. Currently, every sub-component is
+      a property on the hash yielded from `\{{#mdc-card}}`. This does not follow the newer
+      convention of yielding from the component or sub-component it should be directly nested within.
+      For example, `card.title` should be on the hash yielded by `card.primary`, not on the hash
+      yielded by `mdc-card` directly.
+    {{/card.supporting-text}}
+    {{#card.actions}}
+      {{#card.action}}
+        Example Action
+      {{/card.action}}
+      {{#card.action click=(action "alert" "Alert action clicked")}}
+        Alert Action
+      {{/card.action}}
+    {{/card.actions}}
+  {{/mdc-card}}
+</section>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Checkboxes</h2>
+  <label>
+    {{mdc-checkbox checked=isCheckboxOneChecked onchange=(action (mut isCheckboxOneChecked))}}
+    Checkbox
+  </label>
+  <label>
+    {{mdc-checkbox indeterminate=true disabled=true onchange=(action "alert" "Should not see this.")}}
+    Disabled Indeterminate Checkbox
+  </label>
+  {{mdc-checkbox input-id="checkbox-for" checked=isCheckboxTwoChecked onchange=(action (mut isCheckboxTwoChecked))}}
+  <label for="checkbox-for">Disassociated Label Checkbox</label>
+</section>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Elevation</h2>
+  {{#mdc-elevation z=7}}Elevation Depth 7{{/mdc-elevation}}
+</section>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Floating Action Buttons</h2>
+  {{#mdc-fab click=(action "alert" "Stop clicked")}}
+    <i class="material-icons">stop</i>
+  {{/mdc-fab}}
+  {{#mdc-fab plain=true}}
+    <i class="material-icons">play_arrow</i>
+  {{/mdc-fab}}
+  {{#mdc-fab disabled=true click=(action "alert" "Should not see this.")}}
+    <i class="material-icons">pause</i>
+  {{/mdc-fab}}
+  {{#mdc-fab mini=true}}
+    <i class="material-icons">replay</i>
+  {{/mdc-fab}}
+</section>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Text Fields</h2>
+
+  TODO: Bug with placeholder + label.
+
+  {{mdc-textfield
+    label="Email Address"
+    placeholder="something@example.com"
+    value=textfieldOneValue
+    onchange=(action (mut textfieldOneValue))
+    type="email"
+    helptext="This will not be sent to any server"
+  }}
+
+  {{mdc-textfield
+    label="Recipient Email"
+    value="bad@email@example.com"
+    valid=false
+    helptext="This does not look like a valid email address"
+    helptext-validation-msg=true
+  }}
+
+  {{mdc-textfield
+    label="Subject"
+    disabled=true
+    value=textfieldThreeValue
+    onchange=(action (mut textfieldThreeValue))
+    helptext="This is persistent help text, and the field is disabled"
+    helptext-persistent=true
+  }}
+
+  {{mdc-textfield
+    label="Message Body"
+    value=textfieldTwoValue
+    onchange=(action (mut textfieldTwoValue))
+    multiline=true
+    rows=12
+    cols=80
+  }}
+</section>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Icon Toggles</h2>
+
+  TODO: The ripple looks odd here. <br />
+
+  {{#mdc-icon-toggle
+    pressed=isFirstTogglePressed
+    onchange=(action (mut isFirstTogglePressed))
+    class="material-icons"
+  }}
+    {{#if isFirstTogglePressed}}
+      star
+    {{else}}
+      star_border
+    {{/if}}
+  {{/mdc-icon-toggle}}
+  {{#if isFirstTogglePressed}}
+    Unstar it.
+  {{else}}
+    Star it!
+  {{/if}}
+
+  <br />
+  {{#mdc-icon-toggle pressed=true disabled=true class="material-icons" onchange=(action "alert" "Should not see this.")}}
+    star
+  {{/mdc-icon-toggle}}
+  Disabled.
+</section>
+
 {{#mdc-tab-bar links=false as |bar|}}
   {{#bar.tab active=isFirstActive become-active=(action (mut isFirstActive))}}
     Fruits

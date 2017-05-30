@@ -41,11 +41,34 @@ export default Ember.Component.extend(MDCComponent, {
   classNames: ['mdc-icon-toggle'],
   layout,
   didRender() {
+    this._super(...arguments);
     this.sync('disabled');
     this.syncPressed();
   },
-  attributeBindings: mdcAttrs.concat(['tabindex']),
-  classNameBindings: ['mdcClassnames', 'aria-disabled:mdc-icon-toggle--disabled'],
+  attributeBindings: mdcAttrs.concat(['tabindex', 'style']),
+  classNameBindings: ['mdcClassNames', 'aria-disabled:mdc-icon-toggle--disabled'],
+  //endregion
+
+  //region Properties
+  ripple: true,
+  rippleOptions() {
+    return {
+      isUnbounded: () => true,
+      isSurfaceActive: () => get(this, 'foundation').isKeyboardActivated(),
+      computeBoundingRect: () => {
+        const size = 48; // In case the icon font hasn't loaded yet
+        const { left, top } = get(this, 'element').getBoundingClientRect();
+        return {
+          top,
+          left,
+          bottom: left + size,
+          right: left + size,
+          width: size,
+          height: size
+        };
+      }
+    };
+  },
   //endregion
 
   //region Methods

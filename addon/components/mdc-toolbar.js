@@ -43,7 +43,6 @@ export default Ember.Component.extend(MDCComponent, {
   ],
   init() {
     this._super(...arguments);
-    set(this, 'mdcStyles', {});
     set(this, 'mdcTitleStyles', {});
     set(this, 'mdcFirstRowStyles', {});
     set(this, 'rows', Ember.A([]));
@@ -60,11 +59,6 @@ export default Ember.Component.extend(MDCComponent, {
    * Key value pairs for CSS styles
    * @type {Object}
    */
-  mdcStyles: null,
-  /**
-   * Key value pairs for CSS styles
-   * @type {Object}
-   */
   mdcTitleStyles: null,
   /**
    * Key value pairs for CSS styles
@@ -74,7 +68,6 @@ export default Ember.Component.extend(MDCComponent, {
   //endregion
 
   //region Computed Properties
-  style: styleComputed('mdcStyles'),
   titleStyle: styleComputed('mdcTitleStyles'),
   firstRowStyle: styleComputed('mdcFirstRowStyles'),
   firstRow: Ember.computed.readOnly('rows.firstObject'),

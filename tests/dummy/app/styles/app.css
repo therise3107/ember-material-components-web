@@ -1,0 +1,23 @@
+:root {
+  --mdc-theme-accent: #E46651;
+  --mdc-theme-primary: #865931;
+  --mdc-theme-background: #faf4f1;
+}
+
+body {
+  background: var(--mdc-theme-background, white);
+}
+
+label {
+  cursor: pointer;
+}
+
+.component-doc {
+  border-bottom: 1px solid var(--mdc-theme-primary, black);
+  padding-bottom: 2em;
+  margin-bottom: 1em;
+}
+
+.component-doc .mdc-card {
+  width: 480px;
+}
