@@ -18,9 +18,15 @@ export const MDCComponent = Ember.Mixin.create({
   },
   didInsertElement() {
     this._super(...arguments);
-    const foundation = this.createFoundation();
-    set(this, 'foundation', foundation);
-    foundation.init();
+    // We don't want to init the foundation until the next run loop, because
+    // many components rely on child components registering themselves, which
+    // tend to happen in their own didInsertElement hooks that run _after_ the
+    // parent's didInsertElement.
+    Ember.run.scheduleOnce('afterRender', this, () => {
+      const foundation = this.createFoundation();
+      set(this, 'foundation', foundation);
+      foundation.init();
+    });
   },
   willDestroyElement() {
     this._super(...arguments);
