@@ -75,6 +75,7 @@
     "node": ">= 0.12.0"
   },
   "ember-addon": {
+    "demoURL": "https://secondstreet.github.io/ember-material-components-web/"
     "configPath": "tests/dummy/config"
   }
 }
