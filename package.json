@@ -1,6 +1,6 @@
 {
   "name": "ember-material-components-web",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "A suite of Ember components wrapping the official Google material-components-web library",
   "keywords": [
     "ember-addon",
@@ -75,7 +75,7 @@
     "node": ">= 0.12.0"
   },
   "ember-addon": {
-    "demoURL": "https://secondstreet.github.io/ember-material-components-web/"
+    "demoURL": "https://secondstreet.github.io/ember-material-components-web/",
     "configPath": "tests/dummy/config"
   }
 }
