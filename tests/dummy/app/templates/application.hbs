@@ -27,10 +27,10 @@
     {{card.media-item src="http://placekitten.com/960/480" size=3 width=480 alt="Kitten"}}
     {{#card.supporting-text}}
       Please note that the API for cards is planned to change. Currently, every sub-component is
-      a property on the hash yielded from `\{{#mdc-card}}`. This does not follow the newer
+      a property on the hash yielded from <code>\{{#mdc-card}}</code>. This does not follow the newer
       convention of yielding from the component or sub-component it should be directly nested within.
-      For example, `card.title` should be on the hash yielded by `card.primary`, not on the hash
-      yielded by `mdc-card` directly.
+      For example, <code>card.title</code> should be on the hash yielded by <code>card.primary</code>,
+      not on the hash yielded by <code>mdc-card</code> directly.
     {{/card.supporting-text}}
     {{#card.actions}}
       {{#card.action}}
@@ -55,6 +55,35 @@
   </label>
   {{mdc-checkbox input-id="checkbox-for" checked=isCheckboxTwoChecked onchange=(action (mut isCheckboxTwoChecked))}}
   <label for="checkbox-for">Disassociated Label Checkbox</label>
+</section>
+
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Radios</h2>
+  <label>
+    {{mdc-radio checked=isRadioOneChecked onchange=(action (mut isRadioOneChecked))}}
+    Radio
+  </label>
+  <label>
+    {{mdc-radio disabled=true onchange=(action "alert" "Should not see this.")}}
+    Disabled Radio
+  </label>
+  {{mdc-radio input-id="radio-for" checked=isRadioTwoChecked onchange=(action (mut isRadioTwoChecked))}}
+  <label for="radio-for">Disassociated Label Radio</label>
+  <fieldset>
+    Radio group with shared <code>name</code> attribute:
+    <label>
+      {{mdc-radio name="radio-three" checked=isRadioThreeAChecked onchange=(action (mut isRadioThreeAChecked))}}
+      A
+    </label>
+    <label>
+      {{mdc-radio name="radio-three" checked=isRadioThreeBChecked onchange=(action (mut isRadioThreeBChecked))}}
+      B
+    </label>
+    <label>
+      {{mdc-radio name="radio-three" checked=isRadioThreeCChecked onchange=(action (mut isRadioThreeCChecked))}}
+      C
+    </label>
+  </fieldset>
 </section>
 
 <section class="component-doc">
@@ -148,58 +177,84 @@
   Disabled.
 </section>
 
-{{#mdc-tab-bar links=false as |bar|}}
-  {{#bar.tab active=isFirstActive become-active=(action (mut isFirstActive))}}
-    Fruits
-  {{/bar.tab}}
-  {{#bar.tab active=isSecondActive become-active=(action (mut isSecondActive))}}
-    Vegetables
-  {{/bar.tab}}
-  {{#bar.tab active=isThirdActive become-active=(action (mut isThirdActive))}}
-    Meats
-  {{/bar.tab}}
-{{/mdc-tab-bar}}
-<hr>
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Menu</h2>
 
-{{#mdc-tab-bar icons="with-text" links=false as |bar|}}
-  {{#bar.tab active=isFirstActiveAlt become-active=(action (mut isFirstActiveAlt)) as |tab|}}
-    {{#tab.icon}}:D{{/tab.icon}}
-    {{#tab.icon-text}}Smiling{{/tab.icon-text}}
-  {{/bar.tab}}
-  {{#bar.tab active=isSecondActiveAlt become-active=(action (mut isSecondActiveAlt)) as |tab|}}
-    {{#tab.icon}}D:{{/tab.icon}}
-    {{#tab.icon-text}}Frowning{{/tab.icon-text}}
-  {{/bar.tab}}
-  {{#bar.tab active=isThirdActiveAlt become-active=(action (mut isThirdActiveAlt)) as |tab|}}
-    {{#tab.icon}}:O{{/tab.icon}}
-    {{#tab.icon-text}}Shocked{{/tab.icon-text}}
-  {{/bar.tab}}
-{{/mdc-tab-bar}}
+  {{#mdc-menu-anchor as |anchor|}}
+    {{#mdc-icon-toggle class="material-icons" pressed=isMenuOneOpen onchange=(action (mut isMenuOneOpen))}}
+      more_vert
+    {{/mdc-icon-toggle}}
+    {{#mdc-menu anchor=anchor open=isMenuOneOpen cancel=(action (queue (toggle "isMenuOneOpen" this) (action "alert" "Menu canceled"))) as |menu|}}
+      {{#menu.item click=(action (queue (toggle "isMenuOneOpen" this) (action "alert" "Menu item one clicked!")))}}
+        Menu Item One
+      {{/menu.item}}
+      {{#menu.item click=(action (queue (toggle "isMenuOneOpen" this) (action "alert" "Menu item two clicked!")))}}
+        Menu Item Two
+      {{/menu.item}}
+      {{#menu.item click=(action (queue (toggle "isMenuOneOpen" this) (action "alert" "Menu item three clicked!")))}}
+        Menu Item Three
+      {{/menu.item}}
+    {{/mdc-menu}}
+  {{/mdc-menu-anchor}}
+</section>
 
-<hr>
+<section class="component-doc">
+  <h2 class="mdc-typography--title">Tab Bar</h2>
 
-{{#mdc-tab-bar icons="only" links=false as |bar|}}
-  {{#bar.tab active=isFirstActiveAlt become-active=(action (mut isFirstActiveAlt)) as |tab|}}
-    {{#tab.icon}}(O.O){{/tab.icon}}
-  {{/bar.tab}}
-  {{#bar.tab active=isSecondActiveAlt become-active=(action (mut isSecondActiveAlt)) as |tab|}}
-    {{#tab.icon}}(-.-){{/tab.icon}}
-  {{/bar.tab}}
-  {{#bar.tab active=isThirdActiveAlt become-active=(action (mut isThirdActiveAlt)) as |tab|}}
-    {{#tab.icon}}(^.^){{/tab.icon}}
-  {{/bar.tab}}
-{{/mdc-tab-bar}}
+  <h3 class="mdc-typography--subheading2">Action-based tabs</h3>
+  {{#mdc-tab-bar links=false as |bar|}}
+    {{#bar.tab active=isFirstActive become-active=(action (mut isFirstActive))}}
+      Fruits
+    {{/bar.tab}}
+    {{#bar.tab active=isSecondActive become-active=(action (mut isSecondActive))}}
+      Vegetables
+    {{/bar.tab}}
+    {{#bar.tab active=isThirdActive become-active=(action (mut isThirdActive))}}
+      Meats
+    {{/bar.tab}}
+  {{/mdc-tab-bar}}
 
-<hr>
-{{#mdc-tab-bar as |bar|}}
-  {{#bar.tab "one"}}
-    One
-  {{/bar.tab}}
-  {{#bar.tab "two"}}
-    Two
-  {{/bar.tab}}
-{{/mdc-tab-bar}}
+  <h3 class="mdc-typography--subheading2">Tabs with icons and labels</h3>
+  {{#mdc-tab-bar icons="with-text" links=false as |bar|}}
+    {{#bar.tab active=isFirstActiveAlt become-active=(action (mut isFirstActiveAlt)) as |tab|}}
+      {{#tab.icon}}<i class="material-icons">people</i>{{/tab.icon}}
+      {{#tab.icon-text}}People{{/tab.icon-text}}
+    {{/bar.tab}}
+    {{#bar.tab active=isSecondActiveAlt become-active=(action (mut isSecondActiveAlt)) as |tab|}}
+      {{#tab.icon}}<i class="material-icons">credit_card</i>{{/tab.icon}}
+      {{#tab.icon-text}}Money{{/tab.icon-text}}
+    {{/bar.tab}}
+    {{#bar.tab active=isThirdActiveAlt become-active=(action (mut isThirdActiveAlt)) as |tab|}}
+      {{#tab.icon}}<i class="material-icons">shopping_cart</i>{{/tab.icon}}
+      {{#tab.icon-text}}Things{{/tab.icon-text}}
+    {{/bar.tab}}
+  {{/mdc-tab-bar}}
 
-<hr>
+  <h3 class="mdc-typography--subheading2">Tabs with icons</h3>
+  {{#mdc-tab-bar icons="only" links=false as |bar|}}
+    {{#bar.tab active=isFirstActiveAlt2 become-active=(action (mut isFirstActiveAlt2)) as |tab|}}
+      {{#tab.icon}}<i class="material-icons">people</i>{{/tab.icon}}
+    {{/bar.tab}}
+    {{#bar.tab active=isSecondActiveAlt2 become-active=(action (mut isSecondActiveAlt2)) as |tab|}}
+      {{#tab.icon}}<i class="material-icons">credit_card</i>{{/tab.icon}}
+    {{/bar.tab}}
+    {{#bar.tab active=isThirdActiveAlt2 become-active=(action (mut isThirdActiveAlt2)) as |tab|}}
+      {{#tab.icon}}<i class="material-icons">shopping_cart</i>{{/tab.icon}}
+    {{/bar.tab}}
+  {{/mdc-tab-bar}}
 
-{{outlet}}
+  <h3 class="mdc-typography--subheading2">Tabs as <code>\{{link-to}}</code></h3>
+  {{#mdc-tab-bar as |bar|}}
+    {{#bar.tab "application"}}
+      Index
+    {{/bar.tab}}
+    {{#bar.tab "one"}}
+      One
+    {{/bar.tab}}
+    {{#bar.tab "two"}}
+      Two
+  {{/bar.tab}}
+  {{/mdc-tab-bar}}
+
+  {{outlet}}
+</section>

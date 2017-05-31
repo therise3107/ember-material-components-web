@@ -42,8 +42,10 @@ export default Ember.Component.extend(MDCComponent, {
   layout,
   didRender() {
     this._super(...arguments);
-    this.sync('disabled');
-    this.syncPressed();
+    Ember.run.scheduleOnce('afterRender', this, () => {
+      this.sync('disabled');
+      this.syncPressed();
+    });
   },
   attributeBindings: mdcAttrs.concat(['tabindex', 'style']),
   classNameBindings: ['mdcClassNames', 'aria-disabled:mdc-icon-toggle--disabled'],

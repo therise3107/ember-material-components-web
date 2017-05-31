@@ -21,16 +21,18 @@ export default Ember.Component.extend({
   //endregion
 
   //region Ember Hooks
-  didUpdateAttrs() {
+  didInsertElement() {
+    this._super(...arguments);
     this.registerWithMenu();
   },
   willDestroyElement() {
+    this._super(...arguments);
     this.unregisterWithMenu();
   },
   layout,
   tagName: 'li',
   classNames: ['mdc-list-item'],
-  attributeBindings: ['role', 'tabindex'],
+  attributeBindings: ['role', 'tabindex', 'style'],
   //endregion
 
   //region Properties

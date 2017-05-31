@@ -55,9 +55,12 @@ export default Ember.Component.extend(MDCComponent, {
     set(this, 'changeHandlers', Ember.A([]));
   },
   didRender() {
-    this.sync('checked');
-    this.sync('indeterminate');
-    this.sync('disabled');
+    this._super(...arguments);
+    Ember.run.scheduleOnce('afterRender', this, () => {
+      this.sync('checked');
+      this.sync('indeterminate');
+      this.sync('disabled');
+    });
   },
   //endregion
 

@@ -41,29 +41,56 @@ export default Ember.Component.extend(MDCComponent, {
   //region Ember Hooks
   classNames: ['mdc-radio'],
   classNameBindings: ['mdcClassNames'],
+  attributeBindings: ['style'],
   layout,
   didRender() {
-    this.sync('checked');
-    this.sync('disabled');
+    this._super(...arguments);
+    Ember.run.scheduleOnce('afterRender', this, () => {
+      this.sync('checked');
+      this.sync('disabled');
+    });
+  },
+  //endregion
+
+  //region Properties
+  ripple: true,
+  rippleOptions() {
+    return {
+      isUnbounded: () => true,
+      isSurfaceActive: () => false,
+      computeBoundingRect: () => {
+        const size = 40;
+        const { left, top } = get(this, 'element').getBoundingClientRect();
+        return {
+          top,
+          left,
+          bottom: left + size,
+          right: left + size,
+          width: size,
+          height: size
+        };
+      }
+    };
   },
   //endregion
 
   //region Methods
+  _attachMdcInteractionHandlers() {
+    const input = this.$('input').get(0);
+    get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => input.addEventListener(type, handler));
+  },
+  _detachMdcInteractionHandlers() {
+    const input = this.$('input').get(0);
+    get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => input.removeEventListener(type, handler));
+  },
   /**
    * @returns {MDCRadioFoundation}
    */
   createFoundation() {
-    const component = this;
     return new MDCRadioFoundation({
-      addClass(className) {
-        addClass(className, component);
-      },
-      removeClass(className) {
-        removeClass(className, component);
-      },
-      getNativeControl() {
-        return component.$('input').get(0);
-      }
+      addClass: className => get(this, 'mdcClasses').addObject(className),
+      removeClass: className => get(this, 'mdcClasses').removeObject(className),
+      getNativeControl: () => this.$('input').get(0),
     });
   },
   //endregion
