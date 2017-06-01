@@ -50,7 +50,7 @@ const MATCHES = util.getMatchesProperty(HTMLElement.prototype);
  */
 export const createRippleAdapter = (component, overrides) => Object.assign({
   browserSupportsCssVars: () => util.supportsCssVariables(window),
-  isUndbounded: () => false,
+  isUnbounded: () => false,
   isSurfaceActive: () => get(component, 'element')[MATCHES](':active'),
   isSurfaceDisabled: () => get(component, 'disabled'),
   addClass: className => get(component, 'mdcClasses').addObject(className),

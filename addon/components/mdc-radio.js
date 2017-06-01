@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/mdc-radio';
-import { addClass, removeClass, MDCComponent } from '../mixins/mdc-component';
+import { MDCComponent } from '../mixins/mdc-component';
 import { MDCRadioFoundation } from '@material/radio';
 
 const { get } = Ember;

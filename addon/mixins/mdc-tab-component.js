@@ -3,7 +3,7 @@ import { MDCTabFoundation } from '@material/tabs';
 import { MDCComponent } from '../mixins/mdc-component';
 import layout from '../templates/components/mdc-tab-bar/tab';
 
-const { get, set } = Ember;
+const { get } = Ember;
 
 export default Ember.Mixin.create(MDCComponent, {
   //region Ember Hooks
