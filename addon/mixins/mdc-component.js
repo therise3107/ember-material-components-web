@@ -59,7 +59,10 @@ export const MDCComponent = Ember.Mixin.create({
 
   willDestroyElement() {
     this._super(...arguments);
-    get(this, 'foundation').destroy();
+    const foundation = get(this, 'foundation');
+    if (foundation) {
+      foundation.destroy();
+    }
   },
   //endregion
 
