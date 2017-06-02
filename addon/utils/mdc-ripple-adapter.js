@@ -40,7 +40,7 @@ util.getMatchesProperty = (HTMLElementPrototype) => {
 };
 //endregion
 
-const { get } = Ember;
+const { get, run } = Ember;
 const MATCHES = util.getMatchesProperty(HTMLElement.prototype);
 
 /**
@@ -53,8 +53,8 @@ export const createRippleAdapter = (component, overrides) => Object.assign({
   isUnbounded: () => false,
   isSurfaceActive: () => get(component, 'element')[MATCHES](':active'),
   isSurfaceDisabled: () => get(component, 'disabled'),
-  addClass: className => get(component, 'mdcClasses').addObject(className),
-  removeClass: className => get(component, 'mdcClasses').removeObject(className),
+  addClass: className => run(() => get(component, 'mdcClasses').addObject(className)),
+  removeClass: className => run(() => get(component, 'mdcClasses').removeObject(className)),
   registerInteractionHandler: (evtType, handler) => component.registerMdcInteractionHandler(evtType, handler),
   deregisterInteractionHandler: (evtType, handler) => component.deregisterMdcInteractionHandler(evtType, handler),
   registerResizeHandler: handler => window.addEventListener('resize', handler),
