@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { MDCRippleFoundation } from '@material/ripple';
+import getElementProperty from '../utils/get-element-property';
 import { createRippleAdapter } from '../utils/mdc-ripple-adapter';
 import styleComputed from '../utils/style-computed';
 
@@ -151,15 +152,15 @@ export const MDCComponent = Ember.Mixin.create({
   },
 
   _attachMdcInteractionHandlers() {
-    get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => get(this, 'element').addEventListener(type, handler));
+    get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => getElementProperty(this, 'addEventListener', () => null)(type, handler));
   },
 
   _detachMdcInteractionHandlers() {
-    get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => get(this, 'element').removeEventListener(type, handler));
+    get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => getElementProperty(this, 'removeEventListener', () => null)(type, handler));
   },
 
   registerMdcInteractionHandler(type, handler) {
-    Ember.run(() => {
+    Ember.run.next(() => {
       this._detachMdcInteractionHandlers();
       get(this, 'mdcInteractionHandlers').addObject([type, handler]);
       this._attachMdcInteractionHandlers();
@@ -167,7 +168,7 @@ export const MDCComponent = Ember.Mixin.create({
   },
 
   deregisterMdcInteractionHandler(type, handler) {
-    Ember.run(() => {
+    Ember.run.next(() => {
       this._detachMdcInteractionHandlers();
       get(this, 'mdcInteractionHandlers').removeObject([type, handler]);
       this._attachMdcInteractionHandlers();

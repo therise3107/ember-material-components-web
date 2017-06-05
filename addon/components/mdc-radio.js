@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/mdc-radio';
+import getElementProperty from '../utils/get-element-property';
 import { MDCComponent } from '../mixins/mdc-component';
 import { MDCRadioFoundation } from '@material/radio';
 
@@ -76,11 +77,11 @@ export default Ember.Component.extend(MDCComponent, {
 
   //region Methods
   _attachMdcInteractionHandlers() {
-    const input = this.$('input').get(0);
+    const input = getElementProperty(this, 'querySelector', () => ({ addEventListener() {}}))('input');
     get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => input.addEventListener(type, handler));
   },
   _detachMdcInteractionHandlers() {
-    const input = this.$('input').get(0);
+    const input = getElementProperty(this, 'querySelector', () => ({ removeEventListener() {}}))('input');
     get(this, 'mdcInteractionHandlers').forEach(([type, handler]) => input.removeEventListener(type, handler));
   },
   /**

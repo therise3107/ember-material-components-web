@@ -1,5 +1,7 @@
 <h1 class="mdc-typography--headline">MDC-Ember Demos</h1>
 
+{{#if isDemoVisible}}
+
 <section class="component-doc">
   <h2 class="mdc-typography--title">Buttons</h2>
   {{#mdc-button}}Standard Button{{/mdc-button}}
@@ -258,3 +260,7 @@
 
   {{outlet}}
 </section>
+
+{{/if}}
+
+{{#mdc-button class="toggle-demo-visibility" click=(action (toggle "isDemoVisible" this))}}Toggle visibility{{/mdc-button}}
