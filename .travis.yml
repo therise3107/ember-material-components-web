@@ -23,6 +23,9 @@ matrix:
   allow_failures:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
+before_script:
+  - export DISPLAY=:99; sh -e /etc/init.d/xvfb start; sleep 3
+
 before_install:
   - npm config set spin false
   - npm install -g bower
