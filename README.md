@@ -1,6 +1,12 @@
 # ember-material-components-web
 
-[![Build Status](https://travis-ci.org/secondstreet/ember-material-components-web.svg?branch=master)](https://travis-ci.org/secondstreet/ember-material-components-web)
+[![Travis branch](https://img.shields.io/travis/secondstreet/ember-material-components-web/master.svg)](https://travis-ci.org/secondstreet/ember-material-components-web)
+[![npm](https://img.shields.io/npm/dw/ember-material-components-web.svg)]()
+[![npm](https://img.shields.io/npm/v/ember-material-components-web.svg)]()
+[![npm](https://img.shields.io/npm/l/ember-material-components-web.svg)]()
+[![GitHub issues](https://img.shields.io/github/issues/secondstreet/ember-material-components-web.svg)]()
+[![David](https://img.shields.io/david/dev/secondstreet/ember-material-components-web.svg)]()
+[![David](https://img.shields.io/david/secondstreet/ember-material-components-web.svg)]()
 
 Until proper documentation can be written, please refer to the extensive JSDoc comments in the addon/ directory.
 

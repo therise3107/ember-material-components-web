@@ -112,7 +112,7 @@ export default Ember.Component.extend(MDCComponent, {
       setInnerScale: (x, y)  => this.setStyleFor('itemStyles', TRANSFORM_PROPERTY, `scale(${x}, ${y}`),
       getNumberOfItems: () => get(this, 'items.length'),
       registerInteractionHandler: (type, handler) => this.registerMdcInteractionHandler(type, handler),
-      deregisterInteractionHandler: (type, handler) => this.deregisterInteractionHandler(type, handler),
+      deregisterInteractionHandler: (type, handler) => this.deregisterMdcInteractionHandler(type, handler),
       registerDocumentClickHandler: handler => document.addEventListener('click', handler),
       deregisterDocumentClickHandler: handler => document.removeEventListener('click', handler),
       getYParamsForItemAtIndex: index => this.itemAt(index).getYParams(),

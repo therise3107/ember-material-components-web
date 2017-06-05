@@ -2,6 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/mdc-tab-bar';
 import { MDCTabBarFoundation } from '@material/tabs';
 import { MDCComponent } from '../mixins/mdc-component';
+import getElementProperty from '../utils/get-element-property';
 import styleComputed from '../utils/style-computed';
 
 const { computed, get, set } = Ember;
@@ -63,9 +64,9 @@ export default Ember.Component.extend(MDCComponent, {
       unbindOnMDCTabSelectedEvent: () => null, // no-op because this is bound with Ember actions
       registerResizeHandler: (handler) => window.addEventListener('resize', handler),
       deregisterResizeHandler: (handler) => window.removeEventListener('resize', handler),
-      getOffsetWidth: () => get(this, 'element').offsetWidth,
+      getOffsetWidth: () => getElementProperty(this, 'offsetWidth', 0),
       setStyleForIndicator: (propertyName, value) => this.setStyleFor('mdcIndicatorStyles', propertyName, value),
-      getOffsetWidthForIndicator: () => get(this, 'element').querySelector(strings.INDICATOR_SELECTOR).offsetWidth,
+      getOffsetWidthForIndicator: () => getElementProperty(this, 'querySelector', () => ({ offsetWidth: 0 }))(strings.INDICATOR_SELECTOR).offsetWidth,
       notifyChange: (evtData) => get(this, 'onchange')(evtData), // TODO
       getNumberOfTabs: () => get(this, 'tabs.length'),
       isTabActiveAtIndex: (index) => this.isTabActiveAtIndex(index),
@@ -73,8 +74,8 @@ export default Ember.Component.extend(MDCComponent, {
       isDefaultPreventedOnClickForTabAtIndex: (index) => get(this.tabAt(index), 'preventDefaultOnClick'),
       setPreventDefaultOnClickForTabAtIndex: (index, preventDefaultOnClick) => Ember.run(() => set(this.tabAt(index), 'preventDefaultOnClick', preventDefaultOnClick)),
       measureTabAtIndex: (index) => this.tabAt(index).measureSelf(),
-      getComputedWidthForTabAtIndex: (index) => get(this.tabAt(index), 'computedWidth'),
-      getComputedLeftForTabAtIndex: (index) => get(this.tabAt(index), 'computedLeft'),
+      getComputedWidthForTabAtIndex: (index) => getElementProperty(this.tabAt(index), 'computedWidth', 0),
+      getComputedLeftForTabAtIndex: (index) => getElementProperty(this.tabAt(index), 'computedLeft', 0),
     });
   },
   tabAt(index) {

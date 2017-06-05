@@ -2,6 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/mdc-toolbar';
 import { MDCToolbarFoundation, util } from '@material/toolbar';
 import { MDCComponent } from '../mixins/mdc-component';
+import getElementProperty from '../utils/get-element-property';
 import styleComputed from '../utils/style-computed';
 
 const { get, set } = Ember;
@@ -85,8 +86,8 @@ export default Ember.Component.extend(MDCComponent, {
       deregisterResizeHandler: (handler) => window.removeEventListener('resize', handler),
       getViewportWidth: () => window.innerWidth,
       getViewportScrollY: () => window.pageYOffset,
-      getOffsetHeight: () => get(this, 'element').offsetHeight,
-      getFlexibleRowElementOffsetHeight: () => get(this, 'element').querySelector(strings.FLEXIBLE_ROW_SELECTOR).offsetHeight,
+      getOffsetHeight: () => getElementProperty(this, 'offsetHeight', 0),
+      getFlexibleRowElementOffsetHeight: () => getElementProperty(this, 'querySelector', () => ({ offsetHeight: 0 }))(strings.FLEXIBLE_ROW_SELECTOR).offsetHeight,
       notifyChange: (evtData) => Ember.run(() => get(this, 'onchange')(evtData)),
       setStyle: (property, value) => this.setStyleFor('mdcStyles', property, value),
       setStyleForTitleElement: (property, value) => this.setStyleFor('mdcTitleStyles', property, value),

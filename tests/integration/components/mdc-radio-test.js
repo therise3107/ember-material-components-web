@@ -13,13 +13,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{mdc-radio}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#mdc-radio}}
-      template block text
-    {{/mdc-radio}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

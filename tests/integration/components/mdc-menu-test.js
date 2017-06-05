@@ -16,8 +16,8 @@ test('it renders', function(assert) {
 
   // Template block usage:
   this.render(hbs`
-    {{#mdc-menu}}
-      template block text
+    {{#mdc-menu as |menu|}}
+      {{#menu.item}}template block text{{/menu.item}}
     {{/mdc-menu}}
   `);
 

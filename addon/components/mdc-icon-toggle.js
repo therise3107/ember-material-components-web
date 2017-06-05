@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/mdc-icon-toggle';
 import { MDCComponent, addClass, removeClass } from '../mixins/mdc-component';
+import getElementProperty from '../utils/get-element-property';
 import { MDCIconToggleFoundation } from '@material/icon-toggle';
 
 const { get, set } = Ember;
@@ -59,7 +60,7 @@ export default Ember.Component.extend(MDCComponent, {
       isSurfaceActive: () => get(this, 'foundation').isKeyboardActivated(),
       computeBoundingRect: () => {
         const size = 48; // In case the icon font hasn't loaded yet
-        const { left, top } = get(this, 'element').getBoundingClientRect();
+        const { left, top } = getElementProperty(this, 'getBoundingClientRect', () => ({ top: 0, left: 0 }))();
         return {
           top,
           left,

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import getElementProperty from '../utils/get-element-property';
 //import { util } from '@material/ripple'; // TODO: //import { util } from '@material/ripple'; // TODO: URL
 //region FIXME: Delete this once util can be imported.
 /**
@@ -60,7 +61,7 @@ export const createRippleAdapter = (component, overrides) => Object.assign({
   registerResizeHandler: handler => window.addEventListener('resize', handler),
   deregisterResizeHandler: handler => window.removeEventListener('resize', handler),
   updateCssVariable: (varName, value) => component.setStyleFor('mdcStyles', varName, value),
-  computeBoundingRect: () => get(component, 'element').getBoundingClientRect(),
+  computeBoundingRect: () => getElementProperty(this, 'getBoundingClientRect', () => ({ top: 0, left: 0, bottom: 0, right: 0, width: 0, height: 0 }))(),
   getWindowPageOffset: () => ({ x: window.pageXOffset, y: window.pageYOffset })
 }, overrides);
 

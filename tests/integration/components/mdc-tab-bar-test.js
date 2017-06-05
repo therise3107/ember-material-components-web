@@ -16,8 +16,8 @@ test('it renders', function(assert) {
 
   // Template block usage:
   this.render(hbs`
-    {{#mdc-tab-bar}}
-      template block text
+    {{#mdc-tab-bar links=false as |bar|}}
+      {{#bar.tab}}template block text{{/bar.tab}}
     {{/mdc-tab-bar}}
   `);
 

@@ -6,17 +6,10 @@ moduleForComponent('mdc-icon-toggle', 'Integration | Component | mdc icon toggle
 });
 
 test('it renders', function(assert) {
+  assert.expect(1);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{mdc-icon-toggle}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#mdc-icon-toggle}}
+    {{#mdc-icon-toggle as |class|}}
       template block text
     {{/mdc-icon-toggle}}
   `);
