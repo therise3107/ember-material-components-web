@@ -1,6 +1,6 @@
 {
   "name": "ember-material-components-web",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "A suite of Ember components wrapping the official Google material-components-web library",
   "keywords": [
     "ember-addon",

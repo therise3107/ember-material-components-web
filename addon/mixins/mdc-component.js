@@ -60,8 +60,12 @@ export const MDCComponent = Ember.Mixin.create({
   willDestroyElement() {
     this._super(...arguments);
     const foundation = get(this, 'foundation');
+    const rippleFoundation = get(this, 'rippleFoundation');
     if (foundation) {
       foundation.destroy();
+    }
+    if (rippleFoundation) {
+      rippleFoundation.destroy();
     }
   },
   //endregion
