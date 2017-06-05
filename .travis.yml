@@ -13,18 +13,6 @@ cache:
     - $HOME/.npm
     - $HOME/.cache # includes bowers cache
 
-env:
-  # we recommend testing LTS's and latest stable release (bonus points to beta/canary)
-  - EMBER_TRY_SCENARIO="^2.12.2"
-  - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - env: EMBER_TRY_SCENARIO=ember-canary
-
 before_script:
   - export DISPLAY=:99; sh -e /etc/init.d/xvfb start; sleep 3
 
@@ -38,6 +26,4 @@ install:
   - bower install
 
 script:
-  # Usually, it's ok to finish the test scenario without reverting
-  #  to the addon's original dependency state, skipping "cleanup".
-  - ember try:one $EMBER_TRY_SCENARIO test --skip-cleanup
+  - ember try:each
