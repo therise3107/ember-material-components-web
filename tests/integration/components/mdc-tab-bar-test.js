@@ -16,10 +16,14 @@ test('it renders', function(assert) {
 
   // Template block usage:
   this.render(hbs`
-    {{#mdc-tab-bar links=false as |bar|}}
+    {{#mdc-tab-bar links=false additional-indicator-classes="foo" as |bar|}}
       {{#bar.tab}}template block text{{/bar.tab}}
     {{/mdc-tab-bar}}
+    {{mdc-tab-bar/indicator}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$('.mdc-tab-bar .mdc-tab-bar__indicator'), 'tab bar indicator appears');
+
+  assert.ok(this.$('.mdc-tab-bar .mdc-tab-bar__indicator').hasClass('foo'), 'custom class names can be passed into the indicator');
 });

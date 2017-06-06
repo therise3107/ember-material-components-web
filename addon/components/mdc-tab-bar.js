@@ -3,6 +3,7 @@ import layout from '../templates/components/mdc-tab-bar';
 import { MDCTabBarFoundation } from '@material/tabs';
 import { MDCComponent } from '../mixins/mdc-component';
 import getElementProperty from '../utils/get-element-property';
+import getComponentProperty from '../utils/get-component-property';
 import styleComputed from '../utils/style-computed';
 
 const { computed, get, set } = Ember;
@@ -19,6 +20,10 @@ export default Ember.Component.extend(MDCComponent, {
    * @type {?String}
    */
   icons: null,
+  /**
+   * @type {String}
+   */
+  'additional-indicator-classes': '',
   /**
    * @type {Function}
    * @param {Object} evtData
@@ -74,8 +79,8 @@ export default Ember.Component.extend(MDCComponent, {
       isDefaultPreventedOnClickForTabAtIndex: (index) => get(this.tabAt(index), 'preventDefaultOnClick'),
       setPreventDefaultOnClickForTabAtIndex: (index, preventDefaultOnClick) => Ember.run(() => set(this.tabAt(index), 'preventDefaultOnClick', preventDefaultOnClick)),
       measureTabAtIndex: (index) => this.tabAt(index).measureSelf(),
-      getComputedWidthForTabAtIndex: (index) => getElementProperty(this.tabAt(index), 'computedWidth', 0),
-      getComputedLeftForTabAtIndex: (index) => getElementProperty(this.tabAt(index), 'computedLeft', 0),
+      getComputedWidthForTabAtIndex: (index) => getComponentProperty(this.tabAt(index), 'computedWidth', 0),
+      getComputedLeftForTabAtIndex: (index) => getComponentProperty(this.tabAt(index), 'computedLeft', 0),
     });
   },
   tabAt(index) {
