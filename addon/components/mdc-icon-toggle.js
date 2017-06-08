@@ -5,8 +5,7 @@ import getElementProperty from '../utils/get-element-property';
 import { MDCIconToggleFoundation } from '@material/icon-toggle';
 
 const { get, set } = Ember;
-const { strings } = MDCIconToggleFoundation;
-const mdcAttrs = Object.keys(strings).map(x => strings[x]);
+const { strings: { DATA_TOGGLE_ON, DATA_TOGGLE_OFF, ARIA_PRESSED, ARIA_DISABLED, ARIA_LABEL } } = MDCIconToggleFoundation;
 
 export default Ember.Component.extend(MDCComponent, {
   //region Attributes
@@ -48,7 +47,7 @@ export default Ember.Component.extend(MDCComponent, {
       this.syncPressed();
     });
   },
-  attributeBindings: mdcAttrs.concat(['tabindex', 'style']),
+  attributeBindings: [DATA_TOGGLE_ON, DATA_TOGGLE_OFF, ARIA_PRESSED, ARIA_DISABLED, ARIA_LABEL, 'tabindex', 'style'],
   classNameBindings: ['mdcClassNames', 'aria-disabled:mdc-icon-toggle--disabled'],
   //endregion
 
