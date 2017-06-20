@@ -4,7 +4,7 @@ module.exports = {
     return this.addPackagesToProject([
       { name: '@material/base', target: '0.1.0' },
       { name: '@material/animation', target: '0.2.2' },
-      { name: '@material/theme', target: '0.1.0' },
+      { name: '@material/theme', target: '0.1.5' },
       { name: '@material/checkbox', target: '0.1.0' },
       { name: '@material/radio', target: '0.2.5' },
       { name: '@material/button', target: '0.3.7' },

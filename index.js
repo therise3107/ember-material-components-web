@@ -15,6 +15,7 @@ var materialPackages = [
   { name: '@material/list', css: true, js: false },
   { name: '@material/form-field', css: true, js: false },
   { name: '@material/textfield', css: true, js: true },
+  { name: '@material/theme', css: true, js: false },
   { name: '@material/menu', css: true, js: true },
   { name: '@material/toolbar', css: true, js: true },
   { name: '@material/tabs', css: true, js: true },
