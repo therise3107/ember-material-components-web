@@ -48,7 +48,7 @@
     "@material/tabs": "0.1.1",
     "@material/textfield": "0.2.0",
     "@material/theme": "0.1.5",
-    "@material/toolbar": "0.3.2",
+    "@material/toolbar": "0.4.1",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.10.0",

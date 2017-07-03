@@ -87,7 +87,7 @@ export default Ember.Component.extend(MDCComponent, {
       getViewportWidth: () => window.innerWidth,
       getViewportScrollY: () => window.pageYOffset,
       getOffsetHeight: () => getElementProperty(this, 'offsetHeight', 0),
-      getFlexibleRowElementOffsetHeight: () => getElementProperty(this, 'querySelector', () => ({ offsetHeight: 0 }))(strings.FLEXIBLE_ROW_SELECTOR).offsetHeight,
+      getFirstRowElementOffsetHeight: () => getElementProperty(this, 'querySelector', () => ({ offsetHeight: 0 }))(strings.FIRST_ROW_SELECTOR).offsetHeight,
       notifyChange: (evtData) => Ember.run(() => get(this, 'onchange')(evtData)),
       setStyle: (property, value) => this.setStyleFor('mdcStyles', property, value),
       setStyleForTitleElement: (property, value) => this.setStyleFor('mdcTitleStyles', property, value),
