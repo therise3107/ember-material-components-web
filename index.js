@@ -44,7 +44,6 @@ var materialPackages = [
  */
 module.exports = {
   name: 'ember-material-components-web',
-  isDevelopingAddon: function() { return true; }, // Remove this once we're stable
   /**
    * Invoked at the beginning of the build process, this hook allows us to
    * use the `import()` method to include files from our `vendor` tree into
