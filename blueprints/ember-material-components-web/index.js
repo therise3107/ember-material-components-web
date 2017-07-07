@@ -18,7 +18,8 @@ module.exports = {
       { name: '@material/menu', target: '0.4.0' },
       { name: '@material/toolbar', target: '0.4.1'},
       { name: '@material/tabs', target: '0.1.1'},
-      { name: '@material/ripple', target: '0.7.0'}
+      { name: '@material/ripple', target: '0.7.0'},
+      { name: '@material/linear-progress', target: '0.1.3'}
     ]);
   }
 };

@@ -37,6 +37,7 @@ export const MDCComponent = Ember.Mixin.create({
         const foundation = this.createFoundation();
         set(this, 'foundation', foundation);
         foundation.init();
+        this.afterFoundationCreation(foundation);
       }
       if (get(this, 'ripple')) {
         const rippleFoundation = new MDCRippleFoundation(
@@ -125,6 +126,11 @@ export const MDCComponent = Ember.Mixin.create({
 
   //region Methods
   /**
+   * Use if you want to take actions that must be done after the foundation has been created.
+   */
+  afterFoundationCreation() {},
+
+  /**
    * Syncs the Ember Component properties with the MDC Foundation properties
    * @param {String} prop - A property name that exists on the Foundation
    *                        (as prop and setProp) and on the component
@@ -134,7 +140,7 @@ export const MDCComponent = Ember.Mixin.create({
     if (!foundation) { return; }
     const value = get(this, prop);
     const Prop = Ember.String.capitalize(prop);
-    if (foundation[`is${Prop}`]() !== value) {
+    if (!foundation[`is${Prop}`] || foundation[`is${Prop}`]() !== value) {
       foundation[`set${Prop}`](value);
     }
   },
