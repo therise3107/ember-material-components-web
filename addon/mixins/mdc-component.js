@@ -127,11 +127,13 @@ export const MDCComponent = Ember.Mixin.create({
   //region Methods
   /**
    * Use if you want to take actions that must be done after the foundation has been created.
+   * @param {Object}
    */
   afterFoundationCreation() {},
 
   /**
    * Syncs the Ember Component properties with the MDC Foundation properties
+   * Assumes that if there is not an isProp method on the foundation then there must be a setProp method.
    * @param {String} prop - A property name that exists on the Foundation
    *                        (as prop and setProp) and on the component
    */

@@ -20,7 +20,7 @@ var materialPackages = [
   { name: '@material/toolbar', css: true, js: true },
   { name: '@material/tabs', css: true, js: true },
   { name: '@material/ripple', css: true, js: true },
-  { name: '@material/linear-progress', css: true, js: true}
+  { name: '@material/linear-progress', css: true, js: true }
 ];
 
 /**

@@ -3,14 +3,12 @@ import layout from '../templates/components/mdc-linear-progress';
 import { MDCLinearProgressFoundation } from '@material/linear-progress';
 import { MDCComponent } from '../mixins/mdc-component';
 
-const { get, set } = Ember;
+const { get } = Ember;
 
 const { cssClasses, strings } = MDCLinearProgressFoundation;
 
 export default Ember.Component.extend(MDCComponent, {
   //region Attributes
-  role: 'progressbar',
-
   /**
    * @type {Boolean}
    */
@@ -55,15 +53,15 @@ export default Ember.Component.extend(MDCComponent, {
   //endregion
 
   //region Properties
-  mdcLinearProgress: null,
+  role: 'progressbar',
   //endregion
 
   //region Methods
   createFoundation() {
     return new MDCLinearProgressFoundation({
-      hasClass: (className) => get(this, 'element').classList.contains(className),
+      hasClass: (className) => get(this, 'mdcClasses').includes(className),
       addClass: (className) => Ember.run(() => get(this, 'mdcClasses').addObject(className)),
-      removeClass: (className) => Ember.run(() => get(this, 'mdcClasses').addObject(className)),
+      removeClass: (className) => Ember.run(() => get(this, 'mdcClasses').removeObject(className)),
       getPrimaryBar: () => this.$(strings.PRIMARY_BAR_SELECTOR),
       getBuffer: () => this.$(strings.BUFFER_SELECTOR),
       setStyle: (el, property, value) => el.css(property, value)
