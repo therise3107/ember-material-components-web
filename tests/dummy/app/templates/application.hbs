@@ -201,6 +201,23 @@
 </section>
 
 <section class="component-doc">
+  <h2 class="mdc-typography--title">Progress Bar</h2>
+
+  <h3 class="mdc-typography--subheading2">Linear Progress Determinate</h3>
+  {{input value=myProgress min=0 max=1}}
+  <div>Change this to any decimal value between 0 and 1, and the progress bar will update to show that amount.</div>
+  <br>
+  {{mdc-linear-progress progress=myProgress}}
+
+  <h3 class="mdc-typography--subheading2">Linear Progress Indeterminate</h3>
+  {{mdc-linear-progress indeterminate=true}}
+
+  <h3 class="mdc-typography--subheading2">Linear Progress Determinate Accented</h3>
+  {{mdc-linear-progress accent=true}}
+
+</section>
+
+<section class="component-doc">
   <h2 class="mdc-typography--title">Tab Bar</h2>
 
   <h3 class="mdc-typography--subheading2">Action-based tabs</h3>
