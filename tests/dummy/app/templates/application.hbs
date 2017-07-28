@@ -275,6 +275,37 @@
   {{/bar.tab}}
   {{/mdc-tab-bar}}
 
+  <h3 class="mdc-typography--subheading2">Tab Bar Scrolling</h3>
+  {{#mdc-tab-bar links=false as |bar|}}
+    {{#bar.tab active=isRedActive become-active=(action (mut isRedActive))}}
+      Red
+    {{/bar.tab}}
+    {{#bar.tab active=isYellowActive become-active=(action (mut isYellowActive))}}
+      Yellow
+    {{/bar.tab}}
+    {{#bar.tab active=isGreenActive become-active=(action (mut isGreenActive))}}
+      Green
+    {{/bar.tab}}
+    {{#bar.tab active=isWhiteActive become-active=(action (mut isWhiteActive))}}
+      White
+    {{/bar.tab}}
+    {{#bar.tab active=isBlueActive become-active=(action (mut isBlueActive))}}
+      Blue
+    {{/bar.tab}}
+    {{#bar.tab active=isBlackActive become-active=(action (mut isBlackActive))}}
+      Black
+    {{/bar.tab}}
+    {{#bar.tab active=isPurpleActive become-active=(action (mut isPurpleActive))}}
+      Purple
+    {{/bar.tab}}
+    {{#bar.tab active=isOrangeActive become-active=(action (mut isOrangeActive))}}
+      Orange
+    {{/bar.tab}}
+    {{#bar.tab active=isBrownActive become-active=(action (mut isBrownActive))}}
+      Brown
+    {{/bar.tab}}
+  {{/mdc-tab-bar}}
+
   {{outlet}}
 </section>
 
