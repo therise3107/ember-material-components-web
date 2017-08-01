@@ -29,7 +29,8 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.0.10",
-    "ember-rollup": "^0.3.4"
+    "ember-rollup": "^0.3.4",
+    "material-design-icons": "^3.0.1"
   },
   "devDependencies": {
     "@material/animation": "0.2.2",
