@@ -5,6 +5,7 @@ var path = require('path');
 var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var materialPackages = [
+  { name: '@material/animation', css: true, js: true },
   { name: '@material/checkbox', css: true, js: true },
   { name: '@material/radio', css: true, js: true },
   { name: '@material/button', css: true, js: false },

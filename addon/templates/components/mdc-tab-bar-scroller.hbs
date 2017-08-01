@@ -1,0 +1,22 @@
+<div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--back {{backIndicatorClassNames}}">
+  <a class="mdc-tab-bar-scroller__indicator__inner material-icons" href="#" aria-label="scroll back button">
+    navigate_before
+  </a>
+</div>
+<div class="mdc-tab-bar-scroller__scroll-frame">
+  {{yield (hash
+    tab-bar=(component
+          "mdc-tab-bar"
+          class="mdc-tab-bar-scroller__scroll-frame__tabs"
+          register-tab-bar=(action "registerTabBar")
+          deregister-tab-bar=(action "deregisterTabBar")
+          style=scrollFrameStyles
+          scrolling=true
+    )
+  )}}
+</div>
+<div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--forward {{forwardIndicatorClassNames}}">
+  <a class="mdc-tab-bar-scroller__indicator__inner material-icons" href="#" aria-label="scroll forward button">
+    navigate_next
+  </a>
+</div>

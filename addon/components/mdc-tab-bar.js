@@ -12,6 +12,11 @@ const { strings } = MDCTabBarFoundation;
 export default Ember.Component.extend(MDCComponent, {
   //region Attributes
   /**
+   * @private
+   * @type {Boolean}
+   */
+  scrolling: false,
+  /**
    * @type {Boolean}
    */
   links: true,
@@ -35,10 +40,23 @@ export default Ember.Component.extend(MDCComponent, {
   layout,
   classNames: ['mdc-tab-bar'],
   classNameBindings: ['isIconsOnly:mdc-tab-bar--icon-tab-bar', 'isIconsWithText:mdc-tab-bar--icons-with-text', 'mdcClassNames'],
+  attributeBindings: ['style'],
   init() {
     this._super(...arguments);
     set(this, 'tabs', Ember.A([]));
     set(this, 'mdcIndicatorStyles', {});
+  },
+  didInsertElement() {
+    this._super(...arguments);
+    if (get(this, 'scrolling')) {
+      get(this, 'register-tab-bar')(this);
+    }
+  },
+  willDestroyElement() {
+    this._super(...arguments);
+    if (get(this, 'scrolling')) {
+      get(this, 'deregister-tab-bar')();
+    }
   },
   //endregion
 
@@ -80,7 +98,7 @@ export default Ember.Component.extend(MDCComponent, {
       setPreventDefaultOnClickForTabAtIndex: (index, preventDefaultOnClick) => Ember.run(() => set(this.tabAt(index), 'preventDefaultOnClick', preventDefaultOnClick)),
       measureTabAtIndex: (index) => this.tabAt(index).measureSelf(),
       getComputedWidthForTabAtIndex: (index) => getComponentProperty(this.tabAt(index), 'computedWidth', 0),
-      getComputedLeftForTabAtIndex: (index) => getComponentProperty(this.tabAt(index), 'computedLeft', 0),
+      getComputedLeftForTabAtIndex: (index) => getComponentProperty(this.tabAt(index), 'computedLeft', 0)
     });
   },
   tabAt(index) {

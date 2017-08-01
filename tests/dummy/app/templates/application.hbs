@@ -220,6 +220,7 @@
 <section class="component-doc">
   <h2 class="mdc-typography--title">Tab Bar</h2>
 
+
   <h3 class="mdc-typography--subheading2">Action-based tabs</h3>
   {{#mdc-tab-bar links=false as |bar|}}
     {{#bar.tab active=isFirstActive become-active=(action (mut isFirstActive))}}
@@ -262,6 +263,7 @@
     {{/bar.tab}}
   {{/mdc-tab-bar}}
 
+
   <h3 class="mdc-typography--subheading2">Tabs as <code>\{{link-to}}</code></h3>
   {{#mdc-tab-bar as |bar|}}
     {{#bar.tab "application"}}
@@ -272,39 +274,41 @@
     {{/bar.tab}}
     {{#bar.tab "two"}}
       Two
-  {{/bar.tab}}
+    {{/bar.tab}}
   {{/mdc-tab-bar}}
 
   <h3 class="mdc-typography--subheading2">Tab Bar Scrolling</h3>
-  {{#mdc-tab-bar links=false as |bar|}}
-    {{#bar.tab active=isRedActive become-active=(action (mut isRedActive))}}
-      Red
-    {{/bar.tab}}
-    {{#bar.tab active=isYellowActive become-active=(action (mut isYellowActive))}}
-      Yellow
-    {{/bar.tab}}
-    {{#bar.tab active=isGreenActive become-active=(action (mut isGreenActive))}}
-      Green
-    {{/bar.tab}}
-    {{#bar.tab active=isWhiteActive become-active=(action (mut isWhiteActive))}}
-      White
-    {{/bar.tab}}
-    {{#bar.tab active=isBlueActive become-active=(action (mut isBlueActive))}}
-      Blue
-    {{/bar.tab}}
-    {{#bar.tab active=isBlackActive become-active=(action (mut isBlackActive))}}
-      Black
-    {{/bar.tab}}
-    {{#bar.tab active=isPurpleActive become-active=(action (mut isPurpleActive))}}
-      Purple
-    {{/bar.tab}}
-    {{#bar.tab active=isOrangeActive become-active=(action (mut isOrangeActive))}}
-      Orange
-    {{/bar.tab}}
-    {{#bar.tab active=isBrownActive become-active=(action (mut isBrownActive))}}
-      Brown
-    {{/bar.tab}}
-  {{/mdc-tab-bar}}
+  {{#mdc-tab-bar-scroller as |scroller|}}
+    {{#scroller.tab-bar links=false as |bar|}}
+      {{#bar.tab active=isRedActive become-active=(action (mut isRedActive))}}
+        Red
+      {{/bar.tab}}
+      {{#bar.tab active=isYellowActive become-active=(action (mut isYellowActive))}}
+        Yellow
+      {{/bar.tab}}
+      {{#bar.tab active=isGreenActive become-active=(action (mut isGreenActive))}}
+        Green
+      {{/bar.tab}}
+      {{#bar.tab active=isWhiteActive become-active=(action (mut isWhiteActive))}}
+        White
+      {{/bar.tab}}
+      {{#bar.tab active=isBlueActive become-active=(action (mut isBlueActive))}}
+        Blue
+      {{/bar.tab}}
+      {{#bar.tab active=isBlackActive become-active=(action (mut isBlackActive))}}
+        Black
+      {{/bar.tab}}
+      {{#bar.tab active=isPurpleActive become-active=(action (mut isPurpleActive))}}
+        Purple
+      {{/bar.tab}}
+      {{#bar.tab active=isOrangeActive become-active=(action (mut isOrangeActive))}}
+        Orange
+      {{/bar.tab}}
+      {{#bar.tab active=isBrownActive become-active=(action (mut isBrownActive))}}
+        Brown
+      {{/bar.tab}}
+    {{/scroller.tab-bar}}
+  {{/mdc-tab-bar-scroller}}
 
   {{outlet}}
 </section>
